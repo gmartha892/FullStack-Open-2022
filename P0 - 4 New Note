@@ -1,0 +1,17 @@
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note over server: data is sent as the body of the POST request. the server accesses this data, creates a new note object and redirects it the /notes.
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server->browser: HTML code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server->browser: CSS code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server->browser: JS code
+
+note over browser: browser runs main.js which orders the browser to request JSON data from the server on the event (readyState == 4 && this.status == 200). 
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server->browser: data.json [...,{"content":"Cutie 🦄","date":"2022-08-18T02:37:04.728Z"}]
+
+note over browser:
+browser executes the event handler
+notes are assigned to div in HTML and rendered to display
